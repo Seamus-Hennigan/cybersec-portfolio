@@ -553,8 +553,46 @@
             animation: fadeInUp 1s ease-out forwards;
         }
 
+        /* Swipe Container for Mobile */
+        .swipe-container {
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-snap-type: x mandatory;
+            display: none;
+        }
+
+        .swipe-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .swipe-wrapper {
+            display: flex;
+            gap: 1rem;
+            padding: 0 1rem 1rem 1rem;
+        }
+
+        .swipe-wrapper .skill-card,
+        .swipe-wrapper .project-card,
+        .swipe-wrapper .cert-card {
+            flex: 0 0 85%;
+            scroll-snap-align: center;
+            max-width: 85%;
+        }
+
+        .swipe-indicator {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
+            /* Navigation */
             .nav-links {
                 position: fixed;
                 left: -100%;
@@ -565,6 +603,7 @@
                 text-align: center;
                 transition: 0.3s;
                 padding: 2rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.5);
             }
 
             .nav-links.active {
@@ -575,25 +614,131 @@
                 display: flex;
             }
 
+            nav .container {
+                padding: 0 1rem;
+            }
+
+            /* Hero Section */
+            .hero {
+                min-height: 80vh;
+                padding: 1rem;
+            }
+
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .hero .subtitle {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
 
-            .about-content {
-                grid-template-columns: 1fr;
+            .hero p {
+                font-size: 0.95rem;
             }
 
             .cta-buttons {
                 flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            /* Section Headers */
+            h2 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            /* Sections */
+            section {
+                padding: 3rem 1rem;
+            }
+
+            /* About Section */
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .profile-placeholder {
                 width: 200px;
                 height: 200px;
+                font-size: 4rem;
+            }
+
+            /* Skills Grid - Enable Swipe */
+            .skills-grid {
+                display: none;
+            }
+
+            .swipe-container {
+                display: block;
+            }
+
+            .swipe-indicator {
+                display: block;
+            }
+
+            /* Projects Grid - Enable Swipe */
+            .projects-grid {
+                display: none;
+            }
+
+            .project-tags {
+                gap: 0.4rem;
+            }
+
+            .tag {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.6rem;
+            }
+
+            /* Experience Grid */
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Resume Section */
+            .resume-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .resume-preview img {
+                max-height: 60vh;
+            }
+
+            /* Certifications Grid - Enable Swipe */
+            .cert-grid {
+                display: none;
+            }
+
+            /* Contact */
+            .contact-links {
+                gap: 1.5rem;
+            }
+
+            .contact-links a {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .skill-card,
+            .project-card,
+            .experience-card,
+            .cert-card {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -654,6 +799,8 @@
 
 <section id="skills">
     <h2>Technical Skills</h2>
+
+    <!-- Desktop Grid (hidden on mobile) -->
     <div class="skills-grid">
         <div class="skill-card">
             <h3>Programming</h3>
@@ -712,17 +859,80 @@
             </ul>
         </div>
     </div>
+
+    <!-- Mobile Swipe (shown only on mobile) -->
+    <div class="swipe-container">
+        <div class="swipe-wrapper">
+            <div class="skill-card">
+                <h3>Programming</h3>
+                <ul>
+                    <li>Python</li>
+                    <li>C</li>
+                    <li>SQL</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>Bash/Zsh Scripting</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Operating Systems</h3>
+                <ul>
+                    <li>Kali Linux</li>
+                    <li>Ubuntu, Arch, Fedora Linux</li>
+                    <li>Windows 10/11</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Network & Security</h3>
+                <ul>
+                    <li>Cisco IOS</li>
+                    <li>Wireshark</li>
+                    <li>Nmap & Metasploit</li>
+                    <li>Subnetting & Network Troubleshooting</li>
+                    <li>PuTTY</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Cloud Platforms & Services</h3>
+                <ul>
+                    <li>Amazon Web Services (AWS): Lambda, S3, IAM</li>
+                    <li>AWS CLI</li>
+                    <li>Microsoft Azure</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Database</h3>
+                <ul>
+                    <li>PostgreSQL</li>
+                    <li>MySQL</li>
+                    <li>MySQL Workbench</li>
+                    <li>Database Management & Design</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Development Tools</h3>
+                <ul>
+                    <li>Git & GitHub</li>
+                    <li>Visual Studio</li>
+                    <li>JetBrains IDEs (PyCharm, WebStorm, Clion)</li>
+                    <li>PowerShell ISE</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="swipe-indicator">← Swipe to see more →</div>
 </section>
 
-<!-- Projects Section -->
 <section id="projects">
     <h2>Featured Projects</h2>
+
+    <!-- Desktop Grid (hidden on mobile) -->
     <div class="projects-grid">
         <div class="project-card">
             <div class="project-image">
                 <i class="fa-solid fa-shield-halved"></i>
             </div>
-
             <div class="project-content">
                 <h3>Signal Keylogger</h3>
                 <p>A real-time injectable system monitoring and keystroke logging application with a PyQt5-based dashboard with SSL/TLS Encryption</p>
@@ -733,9 +943,6 @@
                     <span class="tag">Socket Programing</span>
                 </div>
                 <div class="project-links">
-                    <!--
-                    <a href="#">View Documentation →</a>
-                    -->
                     <a href="https://github.com/Seamus-Hennigan/Signal-Keylogger"
                        target="_blank"
                        rel="noopener noreferrer">
@@ -767,11 +974,7 @@
                     <span class="tag">Python</span>
                     <span class="tag">PostgreSQL</span>
                 </div>
-
                 <div class="project-links">
-                    <!--
-                    <a href="#">View Documentation →</a>
-                    -->
                     <a href="https://github.com/Seamus-Hennigan/WeatherETL"
                        target="_blank"
                        rel="noopener noreferrer">
@@ -781,9 +984,68 @@
             </div>
         </div>
     </div>
+
+    <!-- Mobile Swipe (shown only on mobile) -->
+    <div class="swipe-container">
+        <div class="swipe-wrapper">
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="project-content">
+                    <h3>Signal Keylogger</h3>
+                    <p>A real-time injectable system monitoring and keystroke logging application with a PyQt5-based dashboard with SSL/TLS Encryption</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">PyQt5</span>
+                        <span class="tag">Multithreading</span>
+                        <span class="tag">Socket Programing</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Seamus-Hennigan/Signal-Keylogger"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub →
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fa-solid fa-cloud-sun"></i>
+                </div>
+                <div class="project-content">
+                    <h3>WeatherETL</h3>
+                    <p>
+                        An automated, serverless weather data pipeline built on AWS that collects,
+                        processes, and visualizes real-time weather data from multiple cities worldwide.
+                        Demonstrates end-to-end cloud infrastructure design and modern ETL principles.
+                    </p>
+                    <div class="project-tags">
+                        <span class="tag">AWS</span>
+                        <span class="tag">Lambda</span>
+                        <span class="tag">S3</span>
+                        <span class="tag">EventBridge</span>
+                        <span class="tag">CloudWatch</span>
+                        <span class="tag">IAM</span>
+                        <span class="tag">API</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">PostgreSQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Seamus-Hennigan/WeatherETL"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            GitHub →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="swipe-indicator">← Swipe to see more →</div>
 </section>
-
-
 
 
 <!-- Experience -->
