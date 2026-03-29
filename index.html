@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Cybersecurity Professional Portfolio - Aspiring Cloud Security Engineer Specialist">
     <title>Seamus Hennigan | Cybersecurity Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
@@ -14,14 +17,14 @@
         }
 
         :root {
-            --primary-bg: #121212;
-            --secondary-bg: #1a1a1a;
-            --accent-color: #FCFAF9;
-            --accent-secondary: #BB86FC;
-            --text-primary: #FCFAF9;
-            --text-secondary: #a8a8a8;
-            --card-bg: #1e1e1e;
-            --border-color: #2a2a2a;
+            --primary-bg: #0d1117;
+            --secondary-bg: #161b22;
+            --accent-color: #f0f6fc;
+            --accent-secondary: #2f81f7;
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --card-bg: #1c2128;
+            --border-color: #30363d;
         }
 
         html {
@@ -29,7 +32,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Space Grotesk', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--primary-bg);
             color: var(--text-primary);
             line-height: 1.6;
@@ -41,7 +44,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 14, 39, 0.95);
+            background: rgba(13, 17, 23, 0.95);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
@@ -81,6 +84,12 @@
             color: var(--accent-color);
         }
 
+        .nav-links a.active {
+            color: var(--accent-secondary);
+            border-bottom: 2px solid var(--accent-secondary);
+            padding-bottom: 2px;
+        }
+
         .mobile-menu {
             display: none;
             flex-direction: column;
@@ -106,6 +115,7 @@
             overflow: hidden;
         }
 
+
         .hero-content {
             max-width: 800px;
             text-align: center;
@@ -126,7 +136,21 @@
             font-size: 1.5rem;
             color: var(--text-secondary);
             margin-bottom: 2rem;
-            animation: fadeInUp 1s ease-out 0.2s both;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid var(--accent-secondary);
+            width: 0;
+            animation: typing 1.8s steps(34) 0.5s forwards, blink 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            0%, 100% { border-color: var(--accent-secondary); }
+            50% { border-color: transparent; }
         }
 
         .hero p {
@@ -159,7 +183,7 @@
             background: var(--accent-color);
             color: var(--primary-bg);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(187, 134, 252, 1);
+            box-shadow: 0 10px 20px rgba(47, 129, 247, 0.55);
         }
 
         .btn-secondary {
@@ -169,7 +193,7 @@
 
         .btn-secondary:hover {
             background: var(--accent-secondary);
-            box-shadow: 0 10px 20px rgba(187, 134, 252, 1);
+            box-shadow: 0 10px 20px rgba(47, 129, 247, 0.55);
         }
 
         /* Sections */
@@ -184,6 +208,16 @@
             margin-bottom: 3rem;
             text-align: center;
             color: var(--accent-color);
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+            margin: 0.6rem auto 0;
+            border-radius: 2px;
         }
 
         /* About Section */
@@ -201,6 +235,19 @@
 
         .about-image {
             text-align: center;
+        }
+
+        .about-image img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 0 0 3px var(--accent-secondary), 0 0 35px rgba(47, 129, 247, 0.35);
+            transition: box-shadow 0.3s;
+        }
+
+        .about-image img:hover {
+            box-shadow: 0 0 0 3px var(--accent-color), 0 0 50px rgba(47, 129, 247, 0.55);
         }
 
         .profile-placeholder {
@@ -233,8 +280,15 @@
 
         .skill-card:hover {
             transform: translateY(-5px);
-            border-color: #FCFAF9;
-            box-shadow: 0 10px 30px rgba(187, 134, 252, 1);
+            border-color: var(--accent-secondary);
+            box-shadow: 0 10px 30px rgba(47, 129, 247, 0.55);
+        }
+
+        .skill-card .skill-icon {
+            font-size: 2rem;
+            color: var(--accent-secondary);
+            margin-bottom: 0.75rem;
+            display: block;
         }
 
         .skill-card h3 {
@@ -279,14 +333,14 @@
 
         .project-card:hover {
             transform: translateY(-5px);
-            border-color: #FCFAF9;
-            box-shadow: 0 10px 30px rgba(187, 134, 252, 1);
+            border-color: var(--accent-secondary);
+            box-shadow: 0 10px 30px rgba(47, 129, 247, 0.55);
         }
 
         .project-image {
             width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, #1a1f3a, #2d3561);
+            background: linear-gradient(135deg, #111827, #1d3461);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -321,6 +375,13 @@
             padding: 0.3rem 0.8rem;
             border-radius: 15px;
             font-size: 0.85rem;
+            border: 1px solid var(--border-color);
+            transition: color 0.2s, border-color 0.2s;
+        }
+
+        .tag:hover {
+            color: var(--accent-secondary);
+            border-color: var(--accent-secondary);
         }
 
         .project-links {
@@ -362,7 +423,7 @@
         .experience-card:hover {
             transform: translateY(-5px);
             border-color: var(--accent-color);
-            box-shadow: 0 10px 30px rgba(187, 134, 252, 1);
+            box-shadow: 0 10px 30px rgba(47, 129, 247, 0.55);
         }
 
         .experience-card h3 {
@@ -438,9 +499,9 @@
 
 
         .resume-card:hover {
-            border-color: #FCFAF9;
+            border-color: var(--accent-secondary);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(187, 134, 252, 1);
+            box-shadow: 0 10px 30px rgba(47, 129, 247, 0.55);
         }
 
         .resume-icon {
@@ -478,9 +539,9 @@
         }
 
         .cert-card:hover {
-            border-color: #AA4465;
+            border-color: var(--accent-secondary);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(170, 68, 101, 0.3);
+            box-shadow: 0 10px 30px rgba(47, 129, 247, 0.3);
         }
         .cert-icon {
             font-size: 3rem;
@@ -803,6 +864,7 @@
     <!-- Desktop Grid (hidden on mobile) -->
     <div class="skills-grid">
         <div class="skill-card">
+            <i class="fa-solid fa-code skill-icon"></i>
             <h3>Programming</h3>
             <ul>
                 <li>Python</li>
@@ -815,6 +877,7 @@
             </ul>
         </div>
         <div class="skill-card">
+            <i class="fa-solid fa-desktop skill-icon"></i>
             <h3>Operating Systems</h3>
             <ul>
                 <li>Kali Linux</li>
@@ -823,6 +886,7 @@
             </ul>
         </div>
         <div class="skill-card">
+            <i class="fa-solid fa-shield-halved skill-icon"></i>
             <h3>Network & Security</h3>
             <ul>
                 <li>Cisco IOS</li>
@@ -833,6 +897,7 @@
             </ul>
         </div>
         <div class="skill-card">
+            <i class="fa-solid fa-cloud skill-icon"></i>
             <h3>Cloud Platforms & Services</h3>
             <ul>
                 <li>Amazon Web Services (AWS): Lambda, S3, IAM, EC2</li>
@@ -840,6 +905,7 @@
             </ul>
         </div>
         <div class="skill-card">
+            <i class="fa-solid fa-database skill-icon"></i>
             <h3>Database</h3>
             <ul>
                 <li>PostgreSQL</li>
@@ -849,6 +915,7 @@
             </ul>
         </div>
         <div class="skill-card">
+            <i class="fa-solid fa-screwdriver-wrench skill-icon"></i>
             <h3>Development Tools</h3>
             <ul>
                 <li>Git & GitHub</li>
@@ -863,6 +930,7 @@
     <div class="swipe-container">
         <div class="swipe-wrapper">
             <div class="skill-card">
+                <i class="fa-solid fa-code skill-icon"></i>
                 <h3>Programming</h3>
                 <ul>
                     <li>Python</li>
@@ -875,6 +943,7 @@
                 </ul>
             </div>
             <div class="skill-card">
+                <i class="fa-solid fa-desktop skill-icon"></i>
                 <h3>Operating Systems</h3>
                 <ul>
                     <li>Kali Linux</li>
@@ -883,6 +952,7 @@
                 </ul>
             </div>
             <div class="skill-card">
+                <i class="fa-solid fa-shield-halved skill-icon"></i>
                 <h3>Network & Security</h3>
                 <ul>
                     <li>Cisco IOS</li>
@@ -893,6 +963,7 @@
                 </ul>
             </div>
             <div class="skill-card">
+                <i class="fa-solid fa-cloud skill-icon"></i>
                 <h3>Cloud Platforms & Services</h3>
                 <ul>
                     <li>Amazon Web Services (AWS): Lambda, S3, IAM, EC2</li>
@@ -900,6 +971,7 @@
                 </ul>
             </div>
             <div class="skill-card">
+                <i class="fa-solid fa-database skill-icon"></i>
                 <h3>Database</h3>
                 <ul>
                     <li>PostgreSQL</li>
@@ -909,6 +981,7 @@
                 </ul>
             </div>
             <div class="skill-card">
+                <i class="fa-solid fa-screwdriver-wrench skill-icon"></i>
                 <h3>Development Tools</h3>
                 <ul>
                     <li>Git & GitHub</li>
@@ -1143,6 +1216,22 @@
     document.querySelectorAll('.skill-card, .project-card, .cert-card').forEach(el => {
         observer.observe(el);
     });
+
+    // Scroll spy — highlight active nav link
+    const sections = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+
+    const spyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                navAnchors.forEach(a => a.classList.remove('active'));
+                const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+                if (active) active.classList.add('active');
+            }
+        });
+    }, { threshold: 0.4 });
+
+    sections.forEach(s => spyObserver.observe(s));
 
     // Smooth scroll offset for fixed nav
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
