@@ -1392,7 +1392,13 @@
 
     // Accordion toggle
     const firstBody = document.querySelector('.accordion-item.active .accordion-body');
-    if (firstBody) firstBody.style.maxHeight = firstBody.scrollHeight + 'px';
+    if (firstBody) {
+        document.fonts.ready.then(() => {
+            requestAnimationFrame(() => {
+                firstBody.style.maxHeight = firstBody.scrollHeight + 'px';
+            });
+        });
+    }
 
     document.querySelectorAll('.accordion-header').forEach(header => {
         header.addEventListener('click', () => {
